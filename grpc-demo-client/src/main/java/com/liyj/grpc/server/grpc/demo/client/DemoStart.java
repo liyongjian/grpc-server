@@ -11,7 +11,7 @@ import com.liyj.grpc.server.grpc.demo.client.impl.HelloWorldClient;
  */
 public class DemoStart {
 	//if HTTPS ,The host is the CN or sub-domain of the certificate.
-	public static String host = "www.http2.com";
+	public static String host = "127.0.0.1";
 	public static int port = 50052;
     public static void main( String[] args ) throws SSLException,
     		InterruptedException {

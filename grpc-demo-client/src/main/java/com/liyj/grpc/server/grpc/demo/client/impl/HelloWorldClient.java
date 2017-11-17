@@ -1,6 +1,5 @@
 package com.liyj.grpc.server.grpc.demo.client.impl;
 
-import java.io.File;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -16,9 +15,8 @@ import com.liyj.grpc.server.grpc.demo.protocol.helloworld.HelloRequest;
 import io.grpc.Channel;
 import io.grpc.ClientInterceptors;
 import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
-import io.grpc.netty.GrpcSslContexts;
-import io.grpc.netty.NettyChannelBuilder;
 import io.grpc.stub.StreamObserver;
 /**
  * call interface implement.
@@ -34,13 +32,13 @@ public class HelloWorldClient {
 	  private final GreeterGrpc.GreeterStub asuncStub;
 	  public HelloWorldClient(String host, int port) throws SSLException {
 	   //plaintext mode
-	   /*channel = ManagedChannelBuilder.forAddress(host, port)
+	   channel = ManagedChannelBuilder.forAddress(host, port)
 	   		.usePlaintext(true)
-	    	.build();*/
-		channel = NettyChannelBuilder.forAddress(host, port)
+	    	.build();
+		/*channel = NettyChannelBuilder.forAddress(host, port)
 			    .sslContext(GrpcSslContexts.forClient()
 			    		.trustManager(new File("E:\\d\\tools\\GRPC\\work\\test\\cert\\ca.cer")).build())
-			    .build();
+			    .build();*/
 	    Channel tempChannel = ClientInterceptors.intercept(channel, new HeaderClientInterceptor());
 	    blockingStub = GreeterGrpc.newBlockingStub(tempChannel);
 	    asuncStub = GreeterGrpc.newStub(tempChannel);

@@ -36,9 +36,10 @@
 		port :server port,default 8080;
 		privateKeyFilePath and certChainFilePath:HTTPS's private key and certificate.HTTPS is not enabled by default.
 	 -->
-	<liyj:serverConfig id="grpcService" host="127.0.0.1" port="50052" 
-			privateKeyFilePath="E:\d\tools\GRPC\work\test\cert\server.key"
-			certChainFilePath="E:\d\tools\GRPC\work\test\cert\server.cer">
+	<liyj:serverConfig id="grpcService" host="127.0.0.1" port="50052" >
+			<!--privateKeyFilePath="E:\d\tools\GRPC\work\test\cert\server.key"
+			certChainFilePath="E:\d\tools\GRPC\work\test\cert\server.cer"-->
+			
 		<!--serviceClassName:grpc interface implements;
 			interceptorClassName:grpc interceptor,default:not enabled.
 		-->

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://liyj.grpc.com/schema/register"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:beans="http://www.springframework.org/schema/beans"
+    targetNamespace="http://liyj.grpc.com/schema/register"
+    elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:import namespace="http://www.springframework.org/schema/beans" />
+	<xsd:element name="service">
+        <xsd:annotation>
+            <xsd:documentation>grpc register spring service</xsd:documentation>  
+        </xsd:annotation>
+        <xsd:complexType> 
+            <xsd:complexContent>
+                <!-- 继承定义 namespace="http://www.springframework.org/schema/beans" -->  
+                <xsd:extension base="beans:identifiedType">
+                    <xsd:attribute name="serviceClassName" type="xsd:string" use="required">
+	                    <xsd:annotation>
+	                        <xsd:documentation><![CDATA[ 服务类. ]]></xsd:documentation>
+	                    </xsd:annotation>
+	                </xsd:attribute>
+                    <xsd:attribute name="interceptorClassName" type="xsd:string" use="optional">
+	                    <xsd:annotation>
+	                        <xsd:documentation><![CDATA[ 服务类使用的拦截器. ]]></xsd:documentation>
+	                    </xsd:annotation>
+	                </xsd:attribute>
+                </xsd:extension>  
+            </xsd:complexContent>  
+        </xsd:complexType>  
+    </xsd:element>
+    <xsd:complexType name="seviceImplList"> 
+     	<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+              <xsd:element ref="service" />
+     	</xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name = "config">  
+         <xsd:complexContent>  
+               <xsd:extension base="seviceImplList">
+               		<xsd:attribute name="id" type="xsd:ID"/>
+                   	<xsd:attribute name="host" type="xsd:string" use="optional" default="127.0.0.1">
+	                    <xsd:annotation>
+	                        <xsd:documentation><![CDATA[ 服务启动的ip地址. ]]></xsd:documentation>
+	                    </xsd:annotation>
+                	</xsd:attribute>
+                   	<xsd:attribute name="port" type="xsd:integer" use="optional" default="8080">
+	                    <xsd:annotation>
+	                        <xsd:documentation><![CDATA[ 服务启动绑定的端口. ]]></xsd:documentation>
+	                    </xsd:annotation>
+	                </xsd:attribute>
+	                   <xsd:attribute name="privateKeyFilePath" type="xsd:string" use="optional">
+	                    <xsd:annotation>
+	                        <xsd:documentation><![CDATA[ 服务以HTTPS启动使用的私钥文件地址，如果不配置将以明文方式启动服务. ]]></xsd:documentation>
+	                    </xsd:annotation>
+	                </xsd:attribute>
+                   	<xsd:attribute name="certChainFilePath" type="xsd:string" use="optional">
+	                    <xsd:annotation>
+	                        <xsd:documentation><![CDATA[ 服务以HTTPS启动使用的证书文件地址，如果不配置将以明文方式启动服务. ]]></xsd:documentation>
+	                    </xsd:annotation>
+                	</xsd:attribute>
+               </xsd:extension>  
+          </xsd:complexContent>  
+     </xsd:complexType>
+    <xsd:element name="serverConfig" type="config"/>
+</xsd:schema>  

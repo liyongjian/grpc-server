@@ -14,6 +14,7 @@
   ~    See the License for the specific language governing permissions and
   ~    limitations under the License.
   -->
+
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
@@ -29,20 +30,19 @@
        http://www.springframework.org/schema/tx/spring-tx.xsd
        http://liyj.grpc.com/schema/register
        http://liyj.grpc.com/schema/grpcRegister.xsd">
+
 	<!--
 		host:server host,default localhost; 
 		port :server port,default 8080;
-		privateKeyFilePath and certChainFilePath:
-			HTTPS's private key and certificate,need to specify alpn.
-			HTTPS is not enabled by default.
+		privateKeyFilePath and certChainFilePath:HTTPS's private key and certificate.HTTPS is not enabled by default.
 	 -->
-	<liyj:serverConfig id="grpcService" host="127.0.0.1" port="50052"
-			privateKeyFilePath="E:\d\tools\GRPC\work\test\cert\server.key" 
+	<liyj:serverConfig id="grpcService" host="127.0.0.1" port="50052" 
+			privateKeyFilePath="E:\d\tools\GRPC\work\test\cert\server.key"
 			certChainFilePath="E:\d\tools\GRPC\work\test\cert\server.cer">
 		<!--serviceClassName:grpc interface implements;
 			interceptorClassName:grpc interceptor,default:not enabled.
 		-->
-    	<liyj:service id="helloWorld" serviceClassName="io.grpc.examples.service.impl.HelloWorldImpl"
-			interceptorClassName="io.grpc.examples.Interceptor.HeaderServerInterceptor"/>
+    	<liyj:service id="helloWorld" serviceClassName="com.liyj.grpc.server.grpc.demo.server.impl.HelloWorldImpl"
+			interceptorClassName="com.liyj.grpc.server.grpc.demo.server.interceptor.HeaderServerInterceptor"/>
 	</liyj:serverConfig>
 </beans>

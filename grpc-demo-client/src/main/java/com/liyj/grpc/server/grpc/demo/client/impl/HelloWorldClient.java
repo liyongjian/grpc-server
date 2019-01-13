@@ -34,7 +34,7 @@ public class HelloWorldClient {
 	   //plaintext mode
 	   channel = ManagedChannelBuilder.forAddress(host, port)
 	   		.usePlaintext(true)
-	    	.build();
+	    	.build(); 
 		/*channel = NettyChannelBuilder.forAddress(host, port)
 			    .sslContext(GrpcSslContexts.forClient()
 			    		.trustManager(new File("E:\\d\\tools\\GRPC\\work\\test\\cert\\ca.cer")).build())

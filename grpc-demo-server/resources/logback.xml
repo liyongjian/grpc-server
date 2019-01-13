@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false" scan="true" scanPeriod="30 minutes">
 
-	<property name="logHome" value="E:/d/logs/demo-server" />
+	<property name="logHome" value="F:/d/logs/demo-server" />
 
 	<appender name="FILE-ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${logHome}/error.log</file>

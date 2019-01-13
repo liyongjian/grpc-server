@@ -9,9 +9,10 @@
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <grpc.version>1.6.0</grpc.version>
+    <grpc.version>1.17.0</grpc.version>
     <slf4j.version>1.7.25</slf4j.version>
-    <logback.version>1.1.2</logback.version>
+    <logback.version>1.2.3</logback.version>
+    <netty.version>4.1.32.Final</netty.version>
   </properties>
   <dependencies>
 	<dependency>
@@ -59,12 +60,12 @@
 		  	<groupId>io.netty</groupId>
 		  	<artifactId>netty-transport</artifactId>
 		  </exclusion>
-	  </exclusions> 
+	  </exclusions> 	  
 	</dependency>
 	<dependency>
 	    <groupId>io.netty</groupId>
 	    <artifactId>netty-all</artifactId>
-	    <version>4.1.11.Final</version>
+	    <version>${netty.version}</version>
 	</dependency>
 	<dependency>
 	  <groupId>io.grpc</groupId>
@@ -85,6 +86,7 @@
 		<groupId>ch.qos.logback</groupId>
 		<artifactId>logback-classic</artifactId>
 		<version>${logback.version}</version>
+		<scope>test</scope>
 	</dependency>	
   </dependencies>
 </project>

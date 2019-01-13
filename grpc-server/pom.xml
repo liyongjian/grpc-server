@@ -12,8 +12,10 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>4.2.6.RELEASE</spring.version>
-    <grpc.version>1.6.0</grpc.version>
+    <grpc.version>1.17.1</grpc.version>
     <slf4j.version>1.7.25</slf4j.version>
+    <logback.version>1.2.3</logback.version>
+    <netty.version>4.1.32.Final</netty.version>
   </properties>
 
   <dependencies>
@@ -21,7 +23,7 @@
 	  <groupId>io.grpc</groupId>
 	  <artifactId>grpc-netty</artifactId>
 	  <version>${grpc.version}</version>
-	  <exclusions>
+	  	  <exclusions>
 		  <exclusion> 
 		  	<groupId>io.netty</groupId>
 		  	<artifactId>netty-codec</artifactId>
@@ -62,12 +64,7 @@
 		  	<groupId>io.netty</groupId>
 		  	<artifactId>netty-transport</artifactId>
 		  </exclusion>
-	  </exclusions> 
-	</dependency>
-	<dependency>
-	    <groupId>io.netty</groupId>
-	    <artifactId>netty-all</artifactId>
-	    <version>4.1.11.Final</version>
+	  </exclusions>
 	</dependency>
 	<dependency>
 	  <groupId>io.grpc</groupId>
@@ -79,6 +76,11 @@
 	  <artifactId>grpc-stub</artifactId>
 	  <version>${grpc.version}</version>
 	</dependency>
+	<dependency>
+	    <groupId>io.netty</groupId>
+	    <artifactId>netty-all</artifactId>
+	    <version>${netty.version}</version>
+	</dependency>	
    	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context</artifactId>
@@ -88,6 +90,12 @@
 	    <groupId>org.slf4j</groupId>
 	    <artifactId>slf4j-api</artifactId>
 	    <version>${slf4j.version}</version>
+	</dependency>
+		<dependency>
+		<groupId>ch.qos.logback</groupId>
+		<artifactId>logback-classic</artifactId>
+		<version>${logback.version}</version>
+		<scope>test</scope>
 	</dependency>
   </dependencies>
 </project>

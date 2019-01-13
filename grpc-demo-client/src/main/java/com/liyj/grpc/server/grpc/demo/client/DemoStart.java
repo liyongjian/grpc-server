@@ -17,11 +17,18 @@ public class DemoStart {
     		InterruptedException {
 	    HelloWorldClient clientX = new HelloWorldClient(host, 50052);
 	    try {
-	      String user = "world!";
+	      String user = "world!-01";
 	      if (args.length > 0) {
 	        user = args[0];
 	      }
-	      clientX.sayHelloworldAsync(user);
+	      clientX.sayHelloworld(user);
+	      user = "world!-02";
+	      clientX.sayHelloworld(user);
+	      user = "world!-03";
+	      clientX.sayHelloworld(user);
+	      user = "world!-04";
+	      clientX.sayHelloworld(user);
+	      
 	      System.out.println("Call is ok.");
 	    } finally {
 	      clientX.shutdown();
